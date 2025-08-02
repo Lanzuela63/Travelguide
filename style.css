@@ -6,6 +6,8 @@
 }
 
 body {
+  margin: 0;
+  padding-top: 60px; /* Space for fixed navbar */
   font-family: 'Segoe UI', sans-serif;
   color: #333333;
   background-color: #f9f9f9;
@@ -53,6 +55,10 @@ body {
 
 /* NAVBAR */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
   width: 100%;
   background-color: #28a745;
   padding: 16px 0;
@@ -68,11 +74,72 @@ body {
   height: 40px;
 }
 
+/* make the parent flex and keep gap consistent */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .nav-links a {
-  margin: 0 16px;
+  color: #ffffff;        /* white text */
+  text-decoration: none; /* remove underline */
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;          /* subtle hover effect */
+}
+
+/* dropdown container */
+.dropdown {
+  position: relative;
+}
+
+/* style the main “Explore” button */
+.dropbtn {
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
+  padding: 0;          /* match your other nav links */
+}
+
+/* hidden by default */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;           /* just below the dropbtn */
+  left: 0;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* style each submenu link */
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333333;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/* hover/focus states */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* show on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* also show on keyboard focus/click */
+.dropbtn:focus + .dropdown-content {
+  display: block;
 }
 
 .signin {
